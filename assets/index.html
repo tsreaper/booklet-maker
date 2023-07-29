@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>Booklet Maker</h1>
+
+<div>
+    <h3>Introduction</h3>
+    <p>Change PDF files into printable 4 * 2 booklet on A4 paper. Mainly for PnP board game rule books.</p>
+    <p>This is a front-end only website. All the typesetting work is done in your browser and your file never leaves your computer.</p>
+</div>
+
+<div>
+    <h3>Choose PDF File</h3>
+    <input id="file-input" type="file" accept=".pdf" />
+</div>
+
+<div>
+    <h3>Export</h3>
+    <button id="submit">Click to Export</button>
+</div>
+
+<div>
+    <h3>Options</h3>
+    <table id="options-table">
+    <tbody>
+    <tr>
+        <td>
+            <input id="option-align-spine" name="option-align-spine" type="checkbox" />
+            <label for="option-align-spine">Align on Book Spine</label>
+        </td>
+        <td>
+            <table class="option-show-case">
+            <tbody>
+            <tr>
+                <td><img src="img/option-align-spine.png" /></td>
+                <td><img src="img/option-default.png" /></td>
+            </tr>
+            <tr>
+                <td>ON</td>
+                <td>OFF</td>
+            </tr>
+            </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input id="option-draw-folding-line" name="option-draw-folding-line" type="checkbox" />
+            <label for="option-draw-folding-line">Draw Folding Line</label>
+        </td>
+        <td>
+            <table class="option-show-case">
+            <tbody>
+            <tr>
+                <td><img src="img/option-folding-line.png" /></td>
+                <td><img src="img/option-default.png" /></td>
+            </tr>
+            <tr>
+                <td>ON</td>
+                <td>OFF</td>
+            </tr>
+            </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+    </table>
+    <div>
+</div>
+
+<style>
+    #options-table {
+        border-collapse: collapse;
+    }
+    
+    #options-table > tbody > tr > td {
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .option-show-case {
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+    }
+
+    .option-show-case > tbody > tr > td {
+        text-align: center;
+    }
+
+    .option-show-case > tbody > tr > td > img {
+        max-width: 120px;
+    }
+</style>
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

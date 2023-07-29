@@ -1,0 +1,15 @@
+{
+  "name": "booklet-typesetter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --target=es2017 --format=esm --outfile=dist/index.js --charset=utf8 --sourcemap --minify && cp -r assets/* dist"
+  },
+  "author": "tsreaper",
+  "license": "Unlicense",
+  "dependencies": {
+    "esbuild": "0.18.17",
+    "pdf-lib": "1.17.1"
+  }
+}
