@@ -8,15 +8,29 @@
 
 <h1>Booklet Maker</h1>
 
+<h2>Introduction</h2>
+
 <div>
-    <h3>Introduction</h3>
     <p>Change PDF files into printable 4 * 2 booklet on A4 paper. Mainly for PnP board game rule books.</p>
     <p>This is a front-end only website. All the typesetting work is done in your browser and your file never leaves your computer.</p>
 </div>
 
+<hr>
+
+<h2>Crafting Area</h2>
+
 <div>
     <h3>Choose PDF File</h3>
     <input id="file-input" type="file" accept=".pdf" />
+</div>
+
+<div>
+    <h3>Choose Which Layout to Make</h3>
+    <input type="radio" id="layout-default" name="layout" value="default" checked />
+    <label for="default">Default (<a href="#assemble-default">assemble instructions</a>)</label>
+    <br>
+    <input type="radio" id="layout-pocketmod" name="layout" value="pocketmod" />
+    <label for="pocketmod">Pocket Mod (<a href="#assemble-pocketmod">assemble instructions</a>)</label>
 </div>
 
 <div>
@@ -71,6 +85,20 @@
     </tbody>
     </table>
     <div>
+</div>
+
+<hr>
+
+<h2>Assemble Instructions</h2>
+
+<div>
+    <h3 id="assemble-default">How to Assemble Default Layout</h3>
+    <p>Default booklet layout should be printed <b>double</b>-sided (duplex on the long side).</p>
+    <img src="img/assemble-default.png" />
+
+    <h3 id="assemble-pocketmod">How to Assemble Pocket Mod Layout</h3>
+    <p>Pocket Mod booklet layout should be printed <b>single</b>-sided.</p>
+    <img src="img/assemble-pocketmod.jpg" />
 </div>
 
 <style>
