@@ -7,7 +7,7 @@ export abstract class AbstractMaker {
         const outputDoc = await PDFDocument.create();
         this.makeImpl(inputPdf, options, outputDoc);
 
-        if (options.shouldDrawFoldingLine()) {
+        if (options.drawFoldingLine) {
             this.drawFoldingLine(outputDoc);
         }
     
@@ -29,7 +29,7 @@ export abstract class AbstractMaker {
         const embeddedDims = embedded.scale(scale);
     
         let deltaY = 0;
-        if (options.shouldAlignSpine()) {
+        if (options.alignSpine) {
             deltaY = outputHeight / 8 - inputWidth * scale / 2;
             if (row % 2 == 0) {
                 deltaY *= -1;

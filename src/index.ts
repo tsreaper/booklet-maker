@@ -3,6 +3,10 @@ import { Options } from './options';
 import { AbstractMaker } from './maker/abstract-maker';
 import { DefaultMaker } from './maker/default-maker';
 import { PocketModMaker } from './maker/pocketmod-maker';
+import { SizePicker } from './size-picker';
+
+const sizePicker = new SizePicker();
+document.getElementById('paper-size-div')!.appendChild(sizePicker.div);
 
 document.getElementById('submit')!.addEventListener('click', (event) => {
     const fileInput = (document.getElementById('file-input') as HTMLInputElement)!;
@@ -19,7 +23,12 @@ document.getElementById('submit')!.addEventListener('click', (event) => {
 
 async function pdfLoaded() {
     const inputPdf = await PDFDocument.load(this.result);
-    const options = new Options();
+    const pageSize = sizePicker.getPageSizeInPixels();
+    if (pageSize == null) {
+        alert('Please input width and height of exported page as numbers.');
+        return;
+    }
+    const options = new Options(pageSize);
 
     let maker: AbstractMaker;
     if ((document.getElementById('layout-default') as HTMLInputElement)!.checked) {

@@ -7,7 +7,7 @@ export class DefaultMaker extends AbstractMaker {
     protected async makeImpl(inputPdf: PDFDocument, options: Options, outputDoc: PDFDocument) {
         const numPages = Math.ceil(inputPdf.getPageCount() / 16) * 2;
         for (let i = 0; i < numPages; i++) {
-            outputDoc.addPage();
+            outputDoc.addPage(options.pageSize);
         }
 
         for (let l = 0, r = Math.ceil(inputPdf.getPageCount() / 4) * 4 - 1, page = 0; l <= r; page += 2) {

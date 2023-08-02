@@ -7,7 +7,7 @@ export class PocketModMaker extends AbstractMaker {
     protected async makeImpl(inputPdf: PDFDocument, options: Options, outputDoc: PDFDocument) {
         const numPages = Math.ceil(inputPdf.getPageCount() / 8);
         for (let i = 0; i < numPages; i++) {
-            outputDoc.addPage();
+            outputDoc.addPage(options.pageSize);
         }
 
         for (let l = 0, r = numPages * 8 - 1, page = 0; l <= r; page++) {
