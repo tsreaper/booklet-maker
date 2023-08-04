@@ -10,6 +10,7 @@
   "license": "Unlicense",
   "dependencies": {
     "esbuild": "0.18.17",
-    "pdf-lib": "1.17.1"
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "3.9.179"
   }
 }

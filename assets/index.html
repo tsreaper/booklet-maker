@@ -24,13 +24,68 @@
     <input id="file-input" type="file" accept=".pdf" />
 </div>
 
+<div id="crafting-area" style="display: none">
+
+<div>
+    <h3>Choose Input PDF Layout</h3>
+    <p>
+        <b>Page Range to Convert:</b>
+        From page <input id="page-range-left" style="width: 40px" />
+        to page <input id="page-range-right" style="width: 40px" />
+        (Convert all pages if left empty. First page is page 1.)
+    </p>
+
+    <details style="border: 1px solid black; padding: 5px;">
+        <summary style="cursor: pointer">Advanced Grid Layout Settings</summary>
+
+        <p>
+            <b>Number of Physical Pages per PDF Page:</b>
+            <input id="num-rows" style="width: 40px" value="1" /> (rows)
+            x
+            <input id="num-cols" style="width: 40px" value="1" /> (columns)
+        </p>
+
+        <p><b>Page Order</b></p>
+        <input type="radio" id="page-order-row-first" name="page-order" value="row-first" checked />
+        <label for="page-order-row-first">
+            <table class="page-order-table">
+            <tbody>
+            <tr><td>1</td><td>2</td></tr>
+            <tr><td>3</td><td>4</td></tr>
+            </tbody>
+            </table>
+        </label>
+        <input type="radio" id="page-order-col-first" name="page-order" value="col-first" />
+        <label for="page-order-col-first">
+            <table class="page-order-table">
+            <tbody>
+            <tr><td>1</td><td>3</td></tr>
+            <tr><td>2</td><td>4</td></tr>
+            </tbody>
+            </table>
+        </label>
+
+        <p><b>Which Area on Each Page to Convert</b></p>
+        <p>(Click on the image to set the corners of conversion area.)</p>
+        <input type="radio" id="page-area-upper-left" name="page-area" value="upper-left" checked />
+        <label for="page-area-upper-left">Set upper-left corner (<span style="color: blue; font-size: 20px;"><b>+</b></span>)</label>
+        <br>
+        <input type="radio" id="page-area-lower-right" name="page-area" value="lower-right" />
+        <label for="page-area-lower-right">Set lower-right corner (<span style="color: red ; font-size: 20px;"><b>+</b></span>)</label>
+        <div style="position: relative; overflow: scroll; margin-top: 5px;">
+            <canvas id="bottom-canvas" style="float: left; z-index: 0;"></canvas>
+            <canvas id="top-canvas" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+        </div>
+    </details>
+</div>
+
 <div>
     <h3>Choose Which Layout to Make</h3>
-    <input type="radio" id="layout-default" name="layout" value="default" checked />
-    <label for="default">Default (<a href="#assemble-default">assemble instructions</a>)</label>
+    <input type="radio" id="output-layout-default" name="output-layout" value="default" checked />
+    <label for="output-layout-default">Default (<a href="#assemble-default">assemble instructions</a>)</label>
     <br>
-    <input type="radio" id="layout-pocketmod" name="layout" value="pocketmod" />
-    <label for="pocketmod">Pocket Mod (<a href="#assemble-pocketmod">assemble instructions</a>)</label>
+    <input type="radio" id="output-layout-pocketmod" name="output-layout" value="pocketmod" />
+    <label for="output-layout-pocketmod">Pocket Mod (<a href="#assemble-pocketmod">assemble instructions</a>)</label>
 </div>
 
 <div>
@@ -89,7 +144,8 @@
     </tr>
     </tbody>
     </table>
-    <div>
+</div>
+
 </div>
 
 <hr>
@@ -107,6 +163,16 @@
 </div>
 
 <style>
+    .page-order-table {
+        border-collapse: collapse;
+        display: inline;
+    }
+
+    .page-order-table > tbody > tr > td {
+        padding: 5px;
+        border: 1px solid black;
+    }
+
     #options-table {
         border-collapse: collapse;
     }
